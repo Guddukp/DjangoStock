@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  
+{% if ticker %}
+    {{ ticker }}
+{% endif %}
+
+ {% if api %}
+    {% if api == "Error..." %}
+        There was a problem with your ticker symble,
+        please try again...
+    {% else  %}
+          <h1>{{ api.companyName }}</h1>
+          <br/>
+          Price: ${{ api.latestPrice }}<br/>
+          IexLastUpdated: {{ api.iexLastUpdated }}<br/>
+          PreviousVolume: {{ api.previousVolume }}<br/>
+          IexMarketPercent: {{ api.iexMarketPercent }}<br/>
+          PeRatio: {{ api.peRatio }}<br/>
+          AvgTotalVolume: {{ api.avgTotalVolume }}<br/>
+    {% endif %}
+ 
+ {% endif %}
+{% endblock %}
